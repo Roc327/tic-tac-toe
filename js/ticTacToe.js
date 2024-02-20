@@ -8,8 +8,9 @@ const player = function (name) {
 
   const getScore = () => score;
   const givePoint = () => score++;
+  const playerName = () => name;
 
-  return { name, score, getScore, givePoint };
+  return { playerName, getScore, givePoint };
 };
 
 const gameFlow = function () {
