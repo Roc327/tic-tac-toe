@@ -38,6 +38,17 @@ const gameBoard = function () {
   return { getBoard, placeMark, printBoard };
 };
 
+function Cell() {
+  let value = 0;
+
+  const addMark = (player) => {
+    value = player;
+  };
+  const getValue = () => value;
+
+  return { addMark, getValue };
+}
+
 const player = function (name) {
   this.name = name;
   let score = 0;
@@ -68,4 +79,37 @@ const gameFlow = function () {
     `We have ${playerList[0].playerName()} playing against ${playerList[1].playerName()} in a glorious battle of....`,
   );
   console.log("TIC TAC TOE!!!");
+
+  const board = gameBoard();
+
+  playerList[0].token = "X";
+  playerList[1].token = "O";
+
+  let activePlayer = playerList[0];
+
+  const switchPlayerTurn = () => {
+    activePlayer =
+      activePlayer === playerList[0] ? playerList[1] : playerList[0];
+  };
+  const getActivePlayer = () => activePlayer;
+
+  const printNewRound = () => {
+    board.printBoard();
+    console.log(`${getActivePlayer().playerName()}'s turn.`);
+  };
+
+  const playRound = (column, row) => {
+    board.placeMark(column, row, getActivePlayer().token);
+
+    // Code to check for winner
+
+    switchPlayerTurn();
+    printNewRound();
+  };
+
+  printNewRound(); // Initial run
+
+  return { playRound, getActivePlayer };
 };
+
+const game = gameFlow();
