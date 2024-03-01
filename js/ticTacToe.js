@@ -13,19 +13,21 @@ const gameBoard = function () {
 
   const getBoard = () => board;
 
-  const placeMark = (column, row, player) => {
-    const availableCells = board
-      .filter((row) => row[column].getValue() === 0)
-      .map((row) => row[column]);
+  const placeMark = (row, column, player) => {
+    const currentMarker = board[row][column].getValue();
 
-    /* 
-      * The following code needs to be updated, this was from a connect four game so mark drops to lowest row *
-    
-    if (!availableCells.length) return;
-
-    const lowestRow = availableCells.length - 1;
-    board[lowestRow][column].addMark(player);
-    */
+    if (currentMarker == 0) {
+      board[row][column].addMark(player);
+    } else {
+      console.log(
+        `This spot is taken with an ${board[row][
+          column
+        ].getValue()} please try again`,
+      );
+      let newRow = prompt("Enter a row 0-2");
+      let newColumn = prompt("Enter a column 0-2");
+      placeMark(newRow, newColumn, player);
+    }
   };
 
   const printBoard = () => {
@@ -98,10 +100,33 @@ const gameFlow = function () {
     console.log(`${getActivePlayer().playerName()}'s turn.`);
   };
 
-  const playRound = (column, row) => {
-    board.placeMark(column, row, getActivePlayer().token);
-
+  const playRound = (row, column) => {
+    board.placeMark(row, column, getActivePlayer().token);
+    //console.log(board.getBoard()[row][column].getValue());
     // Code to check for winner
+    const winCheck = function () {
+      const rowCheck = function (row) {
+        let rowArr = [];
+        for (let i = 0; i < 3; i++) {
+          rowArr.push(board.getBoard()[row][i].getValue());
+        }
+        return rowArr;
+      };
+      const colCheck = function (col) {
+        const colArr = [];
+        for (let i = 0; i < 3; i++) {
+          colArr.push(board.getBoard()[i][col].getValue());
+        }
+        return colArr;
+      };
+      for (let i = 0; i < 3; i++) {
+        console.log(`Row ${i} is `, rowCheck(i));
+      }
+      for (let i = 0; i < 3; i++) {
+        console.log(`Col ${i} is `, colCheck(i));
+      }
+    };
+    winCheck();
 
     switchPlayerTurn();
     printNewRound();
