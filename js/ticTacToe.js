@@ -20,10 +20,8 @@ const gameBoard = function () {
       board[row][column].addMark(player);
     } else {
       console.log(
-        `This spot is taken with an ${board[row][
-          column
-        ].getValue()} please try again`,
-      );
+        `This spot is taken with an ${board[row][column]
+        .getValue()} please try again`,);
       let newRow = prompt("Enter a row 0-2");
       let newColumn = prompt("Enter a column 0-2");
       placeMark(newRow, newColumn, player);
@@ -110,6 +108,7 @@ const gameFlow = function () {
         for (let i = 0; i < 3; i++) {
           rowArr.push(board.getBoard()[row][i].getValue());
         }
+        console.log(!!rowArr.reduce(function(a, b){ return (a === b) ? a : NaN; }));
         return rowArr;
       };
       const colCheck = function (col) {
@@ -120,10 +119,16 @@ const gameFlow = function () {
         return colArr;
       };
       for (let i = 0; i < 3; i++) {
-        console.log(`Row ${i} is `, rowCheck(i));
+        let checkRowArr = rowCheck(i);
+        if (!!checkRowArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
+          console.log(`${game.getActivePlayer().playerName()} wins row ${i} : ${checkRowArr}`);
+        }
       }
       for (let i = 0; i < 3; i++) {
-        console.log(`Col ${i} is `, colCheck(i));
+        let checkColArr = colCheck(i);
+        if (!!checkColArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
+          console.log(`${game.getActivePlayer().playerName()} wins col ${i} : ${checkColArr}`); 
+        }
       }
     };
     winCheck();
