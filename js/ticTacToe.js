@@ -100,39 +100,61 @@ const gameFlow = function () {
 
   const playRound = (row, column) => {
     board.placeMark(row, column, getActivePlayer().token);
-    //console.log(board.getBoard()[row][column].getValue());
-    // Code to check for winner
+    
     const winCheck = function () {
+      // This function checks all ways for a win.  Rows, columns and diagonals
+      
       const rowCheck = function (row) {
+        // Creates and returns an array for the given row
         let rowArr = [];
         for (let i = 0; i < 3; i++) {
           rowArr.push(board.getBoard()[row][i].getValue());
         }
-        console.log(!!rowArr.reduce(function(a, b){ return (a === b) ? a : NaN; }));
         return rowArr;
       };
+
       const colCheck = function (col) {
+        // Creates and returns an array for the given column
         const colArr = [];
         for (let i = 0; i < 3; i++) {
           colArr.push(board.getBoard()[i][col].getValue());
         }
         return colArr;
       };
+
+      const diagCheck = function () {
+        // left to right diag array
+        const lrDiagArr = [board.getBoard()[0][0].getValue(), board.getBoard()[1][1].getValue(), board.getBoard()[2][2].getValue()];
+    
+        // right to left diag array
+        const rlDiagArr = [board.getBoard()[0][2].getValue(), board.getBoard()[1][1].getValue(), board.getBoard()[2][0].getValue()];
+        
+        // Check if either wins
+        if (!!lrDiagArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
+          return (lrDiagArr[0] == "X") ? 1 : 2;
+        } else if (!!rlDiagArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
+          return (rlDiagArr[0] == "X") ? 1 : 2;
+        }
+      };
+
+      diagCheck();  // check diag first to skip loops if possible
+
+      /**********  Loops to check each row/column  **********/
       for (let i = 0; i < 3; i++) {
         let checkRowArr = rowCheck(i);
         if (!!checkRowArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
-          console.log(`${game.getActivePlayer().playerName()} wins row ${i} : ${checkRowArr}`);
+          return (checkRowArr[0] == "X") ? 1 : 2;
         }
       }
       for (let i = 0; i < 3; i++) {
         let checkColArr = colCheck(i);
         if (!!checkColArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
-          console.log(`${game.getActivePlayer().playerName()} wins col ${i} : ${checkColArr}`); 
+          return (checkColArr[0] == "X") ? 1 : 2;
         }
       }
     };
-    winCheck();
 
+    winCheck();
     switchPlayerTurn();
     printNewRound();
   };
