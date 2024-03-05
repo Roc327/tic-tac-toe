@@ -132,12 +132,16 @@ const gameFlow = function () {
         // Check if either wins
         if (!!lrDiagArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
           return (lrDiagArr[0] == "X") ? 1 : 2;
-        } else if (!!rlDiagArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
+        }
+        if (!!rlDiagArr.reduce(function(a, b){ return (a === b) ? a : NaN; })) {
           return (rlDiagArr[0] == "X") ? 1 : 2;
         }
       };
 
-      diagCheck();  // check diag first to skip loops if possible
+      const diagWin = diagCheck();  // check diag first to skip loops if possible
+      if (diagWin == 1 || diagWin == 2) {
+        return diagWin;
+      }
 
       /**********  Loops to check each row/column  **********/
       for (let i = 0; i < 3; i++) {
@@ -154,7 +158,14 @@ const gameFlow = function () {
       }
     };
 
-    winCheck();
+    let winner = winCheck();
+
+    if (winner === 1) {
+      console.log(`${playerList[0].playerName()} wins!! Play again`);
+    } else if (winner == 2) {
+      console.log(`${playerList[1].playerName()} wins!! Play again`);
+    }
+
     switchPlayerTurn();
     printNewRound();
   };
