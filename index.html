@@ -9,12 +9,36 @@
   </head>
   <body>
     <div id="main-grid-container">
-      <div id="header"></div>
+      <div id="header">
+        <div id="header-text">
+          <h1>Tic-Tac-Toe Game</h1>
+        </div>
+      </div>
       <div id="gameBoard-container">
         <div id="gameboard"></div>
       </div>
       <div id="content-container">
-        <div id="players-form"></div>
+        <div id="players-form">
+          <form id="new-game-form">
+            <h1>Add new player info</h1>
+
+            <div class="player-formField">
+              <label for="p1-name" id="p1-name">Player 1: </label>
+              <input type="text" name="p1-name" id="p1-name">
+            </div>
+            <div class="player-formField" id="cpu-checkField">
+              <label for="cpu-check" id="cpu-check">2nd player?</label>
+              <input type="checkbox" name="cpu-check" id="cpu-check" value="cpu-info">
+            </div>
+            <div class="player-formField">
+              <label for="p2-name" id="p2-name">Player 2: </label>
+              <input type="text" name="p2-name" id="p2-name">
+            </div>
+            <div id="form-button-div">
+              <input type="submit" onclick="" id="submit-button" value="Play Game!">
+            </div>
+          </form>
+        </div>
       </div>
     </div>  
   </body>
