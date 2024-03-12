@@ -9,7 +9,7 @@ html {
     grid-template-rows: 1fr 6fr;
     grid-template-columns: 1fr 1fr;
     border: 1px solid black;
-    background-color: rgb(84, 85, 90);
+    background-color: #379683;
 }
 
 #header {
@@ -20,6 +20,12 @@ html {
     grid-column: 1 / 3;
     border: 1px solid black;
     height: 150px;
+}
+
+h1 {
+    font-weight: bold;
+    color: #032649;
+    font-size: 38px;
 }
 
 #gameBoard-container {
@@ -35,6 +41,7 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    background-color: #05386B;
     border: 1px solid black;
     min-height: 400px;
     max-height: 600px;
@@ -58,7 +65,53 @@ html {
     margin: 40px 0 40px 0;
 }
 
+.form-text-field {
+    border: 3px solid #2779a7;
+    border-radius: 8px;
+    background-color: #5cbd95;
+    height: 25px;
+    width: 200px;
+}
+
+div#cpu-checkField {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 90px;
+}
+
+label {
+    font-size: large;
+    font-weight: bold;
+    color: #05386B;
+}
+
+label#cpu-check {
+    margin-right: 30px;
+}
+
 #form-button-div {
     display: flex;
     justify-content: center;
 }
+
+#submit-button {
+    border-radius: 5px;
+    border: 0;
+    background-color: #2779a7;
+    min-width: 125px;
+    min-height: 40px;
+    font-size: medium;
+    font-weight: bold;
+    color: #EDF5E1;
+}
+
+/* Colors
+#5cbd95
+#49c5b6
+#2779a7
+#000
+#05386B
+#8EE4AF
+#EDF5E1
+#379683
+*/
