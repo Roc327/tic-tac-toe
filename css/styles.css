@@ -1,23 +1,7 @@
-/* Sample font classes */
-.orbitron-font {
-  font-family: "Orbitron", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+:root {
+    --header-text: "Orbitron", sans-serif;
+    --player-text: "Micro 5", sans-serif;
 }
-
-.madimi-one-regular {
-    font-family: "Madimi One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.micro-5-regular {
-    font-family: "Micro 5", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}  
-/**/
 
 html {
     font-family: 'Courier New', Courier, monospace;
@@ -46,7 +30,7 @@ html {
 h1 {
     color: #45A29E;
     font-size: 38px;
-    font-family: "Orbitron", sans-serif;
+    font-family: var(--header-text);
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -107,7 +91,7 @@ label {
     font-size: 25px;
     font-weight: bold;
     color: #66FCF1;
-    font-family: "Micro 5", sans-serif;
+    font-family: var(--player-text);
 }
 
 label#cpu-check {
@@ -126,7 +110,7 @@ label#cpu-check {
     min-width: 125px;
     min-height: 40px;
     color: #EDF5E1;
-    font-family: "Orbitron", sans-serif;
+    font-family: var(--header-text);
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -149,4 +133,25 @@ label#cpu-check {
 #8EE4AF
 #EDF5E1
 #379683
+*/
+
+/* Sample font classes
+.orbitron-font {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.madimi-one-regular {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.micro-5-regular {
+    font-family: "Micro 5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}  
 */
