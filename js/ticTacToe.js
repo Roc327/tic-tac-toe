@@ -60,21 +60,15 @@ const player = function (name) {
   return { playerName, getScore, givePoint };
 };
 
-function addPlayers() {
-  // some temp code to test game in console
+function addPlayers(p1, p2) {
   const players = [];
-  players.push(player(prompt("Enter name for Player 1:")));
-  if (prompt("Would you like to enter another player? Type y/n:") == "y") {
-    players.push(player(prompt("What is the players name? ")));
-  } else {
-    players.push(player("CPU"));
-  }
+  players.push(player(p1), player(p2));
   return players;
 }
 
-const gameFlow = function () {
+const gameFlow = function (p1, p2) {
   // code for game flow factory function
-  const playerList = addPlayers();
+  const playerList = addPlayers(p1, p2);
   console.log(
     `We have ${playerList[0].playerName()} playing against ${playerList[1].playerName()} in a glorious battle of....`,
   );
@@ -175,4 +169,39 @@ const gameFlow = function () {
   return { playRound, getActivePlayer };
 };
 
-const game = gameFlow();
+function screenController() {
+  // Need to get players from form fields, clear content and then start and display the game.
+  const contentDisplay = function () {
+    const contentContainer = document.getElementById('content-container');
+    
+    const clearContent = () => {
+      contentContainer = ''; // clear content display
+    }
+
+    const updateScore = () => {
+      // Add and update player info like score, names and win/lose
+      contentContainer = "";  // Need to add <div>'s and page layout info to display
+    }
+
+    return { clearContent, updateScore }
+  }
+
+  const gameDisplay = function () {
+    const displayGameBoard = () => {
+      // Code to display gameboard in #gameboard <div>
+    }
+
+    const clearGameBoard = () => {
+      // Code to clear or rest gameBoard
+    }
+
+    return { displayGameBoard, clearGameBoard }
+  }
+
+  const p1 = document.getElementById('p1-name').value;
+  const p2 = document.getElementById('p2-name').value;
+  console.log(p1, p2);
+  const game = gameFlow(p1, p2);
+}
+
+// const game = gameFlow();
