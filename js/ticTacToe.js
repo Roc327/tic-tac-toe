@@ -60,15 +60,15 @@ const player = function (name) {
   return { playerName, getScore, givePoint };
 };
 
-function addPlayers(p1, p2) {
+function addPlayers() {
   const players = [];
-  players.push(player(p1), player(p2));
+  players.push(player('Player 1'), player('Player 2'));
   return players;
 }
 
-const gameFlow = function (p1, p2) {
+const gameFlow = function () {
   // code for game flow factory function
-  const playerList = addPlayers(p1, p2);
+  const playerList = addPlayers();
   console.log(
     `We have ${playerList[0].playerName()} playing against ${playerList[1].playerName()} in a glorious battle of....`,
   );
@@ -163,12 +163,16 @@ const gameFlow = function (p1, p2) {
     switchPlayerTurn();
     printNewRound();
   };
-
+  console.log('Board is:');
+  board.forEach((row) => {
+    console.log(row);
+  });
   printNewRound(); // Initial run
 
   return { playRound, getActivePlayer };
 };
 
+/*
 function screenController() {
   // Need to get players from form fields, clear content and then start and display the game.
   const contentDisplay = function () {
@@ -202,6 +206,13 @@ function screenController() {
   const p2 = document.getElementById('p2-name').value;
   console.log(p1, p2);
   const game = gameFlow(p1, p2);
-}
 
-// const game = gameFlow();
+  const markClicked = function () {
+    // get which grid was clicked for mark
+    game.playRound(row, col);
+  }
+  return { contentDisplay, gameDisplay, markClicked }
+}
+*/
+
+const game = gameFlow();

@@ -3,13 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Micro+5&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Micro+5&family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/ticTacToe.js" defer></script>
+    <script src="./js/ttt.js" defer></script>
+    <!--<script src="./js/ticTacToe.js" defer></script>-->
     <title>Tic Tac Toe</title>
   </head>
   <body>
@@ -26,26 +30,41 @@
         <div id="players-form">
           <form id="new-game-form">
             <h1>Add new players</h1>
+            <h1 id="playerTurn"></h1>
 
             <div class="player-formField">
               <label for="p1-name" class="player-name">Player 1: </label>
-              <input type="text" name="p1-name" id="p1-name" class="form-text-field">
+              <input
+                type="text"
+                name="p1-name"
+                id="p1-name"
+                class="form-text-field"
+              />
             </div>
             <div class="player-formField">
               <label for="p2-name" class="player-name">Player 2: </label>
-              <input type="text" name="p2-name" id="p2-name" class="form-text-field">
+              <input
+                type="text"
+                name="p2-name"
+                id="p2-name"
+                class="form-text-field"
+              />
             </div>
             <!--<div class="player-formField" id="cpu-checkField">
               <label for="cpu-check" id="cpu-check">2nd player?</label>
               <input type="checkbox" name="cpu-check" id="cpu-check" value="cpu-info">
             </div> -->
             <div id="form-button-div">
-              <input type="submit" onclick="screenController()" id="submit-button" value="Play Game!">
+              <input
+                type="submit"
+                onclick="screenController()"
+                id="submit-button"
+                value="Play Game!"
+              />
             </div>
           </form>
         </div>
       </div>
-    </div>  
+    </div>
   </body>
 </html>
-

@@ -1,120 +1,131 @@
 :root {
-    --header-text: "Orbitron", sans-serif;
-    --player-text: "Micro 5", sans-serif;
+  --header-text: "Orbitron", sans-serif;
+  --player-text: "Micro 5", sans-serif;
 }
 
 html {
-    font-family: 'Courier New', Courier, monospace;
-    padding: 5px;
-    background-color: black;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  background-color: black;
 }
 
 #main-grid-container {
-    display: grid;
-    grid-template-rows: 1fr 6fr;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid black;
-    background-color: #0B0C10;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+  background-color: #0b0c10;
 }
 
 #header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: 1;
-    grid-column: 1 / 3;
-    border-bottom: 1px solid #66FCF1;
-    height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 1 / 3;
+  border-bottom: 1px solid #66fcf1;
+  height: 150px;
 }
 
 h1 {
-    color: #45A29E;
-    font-size: 38px;
-    font-family: var(--header-text);
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  color: #45a29e;
+  font-size: 38px;
+  font-family: var(--header-text);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #gameBoard-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 2 / 3;
-    grid-column: 1;
-    border-right: 1px solid #66FCF1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 2 / 3;
+  grid-column: 1;
+  border-right: 1px solid #66fcf1;
 }
 
 #gameboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    background-color: #1F2833;
-    border: 1px solid #66FCF1;
-    min-height: 400px;
-    max-height: 600px;
-    min-width: 400px;
-    max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #1f2833;
+  border: 1px solid #66fcf1;
+  min-height: 400px;
+  max-height: 600px;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  border: 1px solid grey;
+  background: lightyellow;
+  cursor: pointer;
 }
 
 #content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: 2 / 3;
-    grid-column: 2;
-    border-left: 1px solid #66FCF1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 2 / 3;
+  grid-column: 2;
+  border-left: 1px solid #66fcf1;
 }
 
 .player-formField {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 40px 0 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 40px 0;
 }
 
 .form-text-field {
-    border: 3px solid #45A29E;
-    border-radius: 8px;
-    background-color: #C5C6C7;
-    height: 25px;
-    width: 200px;
+  border: 3px solid #45a29e;
+  border-radius: 8px;
+  background-color: #c5c6c7;
+  height: 25px;
+  width: 200px;
 }
 
 div#cpu-checkField {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 90px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 90px;
 }
 
 label {
-    font-size: 25px;
-    font-weight: bold;
-    color: #66FCF1;
-    font-family: var(--player-text);
+  font-size: 25px;
+  font-weight: bold;
+  color: #66fcf1;
+  font-family: var(--player-text);
 }
 
 label#cpu-check {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
 #form-button-div {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #submit-button {
-    border-radius: 5px;
-    border: 0;
-    background-color: #2779a7;
-    min-width: 125px;
-    min-height: 40px;
-    color: #EDF5E1;
-    font-family: var(--header-text);
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 18px;
+  border-radius: 5px;
+  border: 0;
+  background-color: #2779a7;
+  min-width: 125px;
+  min-height: 40px;
+  color: #edf5e1;
+  font-family: var(--header-text);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
 }
 
 /* Colors
