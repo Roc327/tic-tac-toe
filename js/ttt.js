@@ -169,11 +169,11 @@ function GameController(
     let winner = winCheck();
 
     if (winner === 1) {
-      console.log(`${players[0].playerName()} wins!! Play again`);
-      alert(`${players[0].playerName()} wins!! Play again`);
+      console.log(`${players[0].name} wins!! Play again`);
+      alert(`${players[0].name} wins!! Play again`);
     } else if (winner == 2) {
-      console.log(`${players[1].playerName()} wins!! Play again`);
-      alert(`${players[1].playerName()} wins!! Play again`);
+      console.log(`${players[1].name} wins!! Play again`);
+      alert(`${players[1].name} wins!! Play again`);
     }
 
     switchPlayerTurn();
@@ -219,12 +219,23 @@ function ScreenController() {
         cellButton.dataset.row = row[index][index];
       });
     });
+    const myCell = document.getElementsByClassName('cell');
+    for (let i = 0; i < myCell.length; i++) {
+	    if (i <= 2) {
+		    myCell[i].dataset.row = 0;
+	    } else if (i > 2 && i <= 5) {
+		    myCell[i].dataset.row = 1;
+	    } else {
+		    myCell[i].dataset.row = 2;
+    	}
+    }
+    /*
     board.forEach((column) => {
       column.forEach((cell, index) => {
         const cellButton = document.querySelector(".cell");
         cellButton.dataset.row = index;
       });
-    });
+    });*/
   };
 
   // Add event listener for the board
