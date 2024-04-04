@@ -70,6 +70,7 @@ h1 {
 
 #content-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-row: 2 / 3;
@@ -115,6 +116,20 @@ label#cpu-check {
 }
 
 #submit-button {
+  border-radius: 5px;
+  border: 0;
+  background-color: #2779a7;
+  min-width: 125px;
+  min-height: 40px;
+  color: #edf5e1;
+  font-family: var(--header-text);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+#reset-button {
   border-radius: 5px;
   border: 0;
   background-color: #2779a7;

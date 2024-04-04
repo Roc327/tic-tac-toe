@@ -27,6 +27,9 @@
         <div id="gameboard"></div>
       </div>
       <div id="content-container">
+        <div>
+          <h1 id="playerTurn"></h1>
+        </div>
         <div id="players-form">
           <form id="new-game-form">
             <h1>Add new players</h1>
@@ -55,12 +58,16 @@
               <input type="checkbox" name="cpu-check" id="cpu-check" value="cpu-info">
             </div> -->
             <div id="form-button-div">
+              <!--
               <input
                 type="submit"
-                onclick="screenController()"
+                onclick="startClick()"
                 id="submit-button"
                 value="Play Game!"
-              />
+              />-->
+              <button onclick="startClick()" id="submit-button">
+                Play Game!
+              </button>
             </div>
           </form>
         </div>

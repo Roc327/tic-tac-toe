@@ -19,8 +19,10 @@ function Gameboard() {
       board[row][column].addMark(player);
     } else {
       alert(
-        `This spot is taken with an ${board[row][column]
-          .getValue()} please try again`,);
+        `This spot is taken with an ${board[row][
+          column
+        ].getValue()} please try again`,
+      );
     }
   };
 
@@ -203,45 +205,39 @@ function ScreenController() {
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
-    playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+    //playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+    playerTurnDiv.innerHTML = `${activePlayer.name}'s turn...`;
 
     // Render board squares
     board.forEach((row) => {
       row.forEach((cell, index) => {
-        // Anything clickable should be a button!!
+        // Make each cell a button
         const cellButton = document.createElement("button");
         cellButton.classList.add("cell");
         // Create a data attribute to identify the column
-        // This makes it easier to pass into our `playRound` function
         cellButton.dataset.column = index;
         cellButton.textContent = cell.getValue();
         boardDiv.appendChild(cellButton);
         cellButton.dataset.row = row[index][index];
       });
     });
-    const myCell = document.getElementsByClassName('cell');
+    // Get each <div> and add data attributes for the rows
+    const myCell = document.getElementsByClassName("cell");
     for (let i = 0; i < myCell.length; i++) {
-	    if (i <= 2) {
-		    myCell[i].dataset.row = 0;
-	    } else if (i > 2 && i <= 5) {
-		    myCell[i].dataset.row = 1;
-	    } else {
-		    myCell[i].dataset.row = 2;
-    	}
+      if (i <= 2) {
+        myCell[i].dataset.row = 0;
+      } else if (i > 2 && i <= 5) {
+        myCell[i].dataset.row = 1;
+      } else {
+        myCell[i].dataset.row = 2;
+      }
     }
-    /*
-    board.forEach((column) => {
-      column.forEach((cell, index) => {
-        const cellButton = document.querySelector(".cell");
-        cellButton.dataset.row = index;
-      });
-    });*/
   };
 
   // Add event listener for the board
   function clickHandlerBoard(e) {
     const selectedColumn = e.target.dataset.column;
-    // Make sure I've clicked a column and not the gaps in between
+    // Make sure I've clicked a cell and not the gaps in between
     if (!selectedColumn) return;
 
     const selectedRow = e.target.dataset.row;
@@ -255,8 +251,27 @@ function ScreenController() {
 
   // Initial render
   updateScreen();
-
-  // We don't need to return anything from this module because everything is encapsulated inside this screen controller.
 }
 
 ScreenController();
+
+const displayedBoard = document.getElementById("gameboard");
+displayedBoard.style.visibility = "hidden";
+
+const playerNames = [];
+
+function startClick() {
+  playerNames.push(document.getElementById("p1-name").value);
+  playerNames.push(document.getElementById("p2-name").value);
+
+  const contentDisplayed = document.getElementById("players-form");
+  contentDisplayed.innerHTML = "";
+  contentDisplayed.innerHTML =
+    '<div id="player-turn"><h1 id="playerTurn"></h1></div><div id="form-button-div"><button id="reset-button" onclick="resetGame()">Reset!</button></div>';
+
+  displayedBoard.style.visibility = "visible";
+}
+
+function resetGame() {
+  window.location.reload();
+}
