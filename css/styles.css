@@ -63,8 +63,10 @@ h1 {
   align-items: center;
   text-align: center;
   font-size: 2rem;
-  border: 1px solid grey;
-  background: lightyellow;
+  border: 1px solid #66fcf1;
+  background: #1f2833;
+  color: #45a29e;
+  font-family: var(--header-text);
   cursor: pointer;
 }
 
@@ -179,5 +181,5 @@ label#cpu-check {
     font-family: "Micro 5", sans-serif;
     font-weight: 400;
     font-style: normal;
-}  
+}
 */
