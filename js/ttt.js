@@ -51,19 +51,24 @@ function Cell() {
   };
 }
 
-function GameController(
-  playerOneName = "Player One",
-  playerTwoName = "Player Two",
-) {
+function GameController(p1, p2) {
+  // Checks if names where entered
+  if (p1 === "") {
+    p1 = "Player One";
+  }
+  if (p2 === "") {
+    p2 = "Player Two";
+  }
+
   const board = Gameboard();
 
   const players = [
     {
-      name: playerOneName,
+      name: p1,
       mark: "X",
     },
     {
-      name: playerTwoName,
+      name: p2,
       mark: "O",
     },
   ];
@@ -172,10 +177,10 @@ function GameController(
 
     if (winner === 1) {
       console.log(`${players[0].name} wins!! Play again`);
-      alert(`${players[0].name} wins!! Play again`);
+      return gameWin(players[0].name);
     } else if (winner == 2) {
       console.log(`${players[1].name} wins!! Play again`);
-      alert(`${players[1].name} wins!! Play again`);
+      return gameWin(players[1].name);
     }
 
     switchPlayerTurn();
@@ -191,8 +196,8 @@ function GameController(
   };
 }
 
-function ScreenController() {
-  const game = GameController();
+function ScreenController(p1, p2) {
+  const game = GameController(p1, p2);
   const playerTurnDiv = document.querySelector("#playerTurn");
   const boardDiv = document.querySelector("#gameboard");
 
@@ -205,7 +210,6 @@ function ScreenController() {
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
-    //playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
     playerTurnDiv.innerHTML = `${activePlayer.name}'s turn...`;
 
     // Render board squares
@@ -253,25 +257,33 @@ function ScreenController() {
   updateScreen();
 }
 
-ScreenController();
+function gameWin(winner) {
+  // update page when win condition met and clears screens
+  document.getElementById("gameboard").style.visibility = "hidden";
+  document.getElementById("playerTurn").style.visibility = "hidden";
+  const addWinner = document.getElementById("content-container");
+  console.log(`${winner} is the winner`);
+  addWinner.innerHTML = `<h1 id="display-winner">${winner} Wins!</h1><button id="reset-button" onclick="resetGame()">Reset!</button>`;
+}
 
 const displayedBoard = document.getElementById("gameboard");
 displayedBoard.style.visibility = "hidden";
 
-const playerNames = [];
-
 function startClick() {
-  playerNames.push(document.getElementById("p1-name").value);
-  playerNames.push(document.getElementById("p2-name").value);
+  // start ScreenController and update content display
+  const p1 = document.getElementById("p1-name").value;
+  const p2 = document.getElementById("p2-name").value;
 
-  const contentDisplayed = document.getElementById("players-form");
+  const contentDisplayed = document.getElementById("content-container");
   contentDisplayed.innerHTML = "";
   contentDisplayed.innerHTML =
-    '<div id="player-turn"><h1 id="playerTurn"></h1></div><div id="form-button-div"><button id="reset-button" onclick="resetGame()">Reset!</button></div>';
+    '<div id="player-turn"><h1 id="playerTurn"></h1></div><div id="form-button-div"></div><button id="reset-button" onclick="resetGame()">Reset!</button>';
 
   displayedBoard.style.visibility = "visible";
+  ScreenController(p1, p2);
 }
 
 function resetGame() {
+  // just refreshes page to restart game
   window.location.reload();
 }
